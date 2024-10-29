@@ -9,15 +9,16 @@
  * This file separates the webpack require.context from the rest of the i18n message loading
  * so that it can be mocked in tests.
  */
-export const DEFAULT_LOCALE = 'en';
+export const DEFAULT_LOCALE = 'zh-CN';
 
 export async function loadMessages(locale: any) {
   if (locale === DEFAULT_LOCALE) {
     return {};
   }
+
   if (locale === 'dev') {
     const pseudoMessages = {};
-    const defaultMessages = await import('../lang/default/en.json');
+    const defaultMessages = await import('../lang/zh-CN.json');
     const { generateENXA } = await import('@formatjs/cli/src/pseudo_locale');
     Object.entries(defaultMessages).forEach(
       // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
